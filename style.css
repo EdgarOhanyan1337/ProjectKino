@@ -1,0 +1,469 @@
+/* Общие стили для всех страниц */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Фиксируем высоту страницы */
+}
+
+/* Навигация для всех страниц */
+header {
+    width: 100%;
+    background-color: #1c1c1c;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Убедимся, что хедер всегда наверху */
+}
+
+/* Навигационные ссылки */
+.navbar {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar button {
+    border-radius: 12px 5px ;
+}
+
+.navbar a:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Секция с фильмами */
+.movies-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #181818;
+    width: 100%;
+}
+
+.movies-section h2 {
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.movies-row {
+    display: flex;
+    gap: 30px; /* Расстояние между постерами */
+    justify-content: center; /* Центрируем постеры */
+    flex-wrap: wrap; /* Разрешаем перенос элементов на следующую строку */
+}
+
+.movie-card {
+    position: relative;
+    width: 220px;
+    height: 330px;
+    background-color: #333;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: opacity 0.3s ease;
+}
+
+.movie-card:hover img {
+    opacity: 0.9;
+}
+
+.rating {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 18px;
+    font-weight: bold;
+}
+
+/* Убираем абсолютное позиционирование для рейтинга */
+.rating-positioned {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 18px;
+    font-weight: bold;
+    margin-top: 20px; /* Добавляем отступ сверху */
+    text-align: center; /* Центрируем текст */
+    display: inline-block;
+}
+
+
+/* Основной контент */
+.main-content {
+    flex-grow: 1; /* Дает возможность этому разделу занимать оставшееся пространство */
+    padding-top: 20px; /* Отступ сверху, чтобы не перекрывать контент хедером */
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    header {
+        padding: 10px;
+    }
+
+    .movies-section h2 {
+        font-size: 28px;
+    }
+
+    .movies-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    body {
+        height: 100vh; /* Сохраняем 100% высоту */
+    }
+
+    .main-content {
+        flex-grow: 1;
+        padding-top: 10px; /* Уменьшаем отступ сверху */
+    }
+}
+
+/* Дополнительные стили для контейнеров форм регистрации и входа */
+.container {
+    width: 400px;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.container.active {
+    align-items: center;
+    display: block;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 92%;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #0a0a0a;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+    outline: none;
+    border: 2px solid #000000;
+    background-color: #000000;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #000000fd;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #414040;
+}
+
+/* Респонсивность для мобильных устройств */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .movies-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Стили для страницы фильма */
+.movie-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #1c1c1c;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.movie-container h2 {
+    color: #fff;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.video-player {
+    margin: 20px 0;
+}
+
+video {
+    width: 100%; /* Ограничиваем ширину плеера */
+     /* Максимальная ширина плеера */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+.movie-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Общие стили */
+.movie-player {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.movie-player video {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Полноэкранный режим */
+.plyr__video-wrapper video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover; /* Растягивает видео без черных полос */
+}
+
+.rating-section {
+    margin-top: 30px;
+}
+
+/* Стили для звездочек рейтинга */
+.stars {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.stars label {
+    font-size: 30px;
+    cursor: pointer;
+    color: #555; /* Серый цвет по умолчанию */
+    transition: color 0.3s ease;
+}
+
+/* Цвет звездочек при наведении */
+.stars label:hover,
+.stars input:checked ~ label {
+    color: #888; /* Сероватый цвет при наведении */
+}
+
+/* Скрываем радио кнопки */
+.stars input {
+    display: none;
+}
+
+button {
+    background-color: #ff6347;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff4500;
+}
+
+/* Стиль формы администратора */
+.admin-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.admin-form h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-form input,
+.admin-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.admin-form input[type="file"] {
+    padding: 5px;
+}
+
+.admin-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.admin-form button:hover {
+    background-color: #e5533a;
+}
+/* Стили для страницы профиля */
+.profile-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1c1c1c;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    color: #fff;
+}
+
+.profile-container h2 {
+    margin-bottom: 20px;
+}
+
+.profile-info p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.profile-info img {
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+button {
+    background-color: #ff6347;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff4500;
+}
+/* Профиль */
+.profile-container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.profile-avatar {
+    position: relative; /* Для расположения меню */
+    display: inline-block;
+    border-radius: 50%; /* Сделать аватарку круглой */
+    overflow: hidden; /* Чтобы не выходило за пределы круга */
+}
+
+.profile-avatar img {
+    width: 150px; /* Размер аватарки */
+    height: 150px; /* Размер аватарки */
+    object-fit: cover; /* Обеспечивает правильное обрезание изображения */
+    border-radius: 50%; /* Делаем аватарку круглой */
+    transition: all 0.3s ease; /* Плавное изменение */
+}
+
+.profile-avatar:hover img {
+    opacity: 0.7; /* При наведении изображение будет полупрозрачным */
+}
+
+.profile-avatar:hover .avatar-menu {
+    display: block; /* Показываем меню при наведении */
+}
+
+.avatar-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7); /* Полупрозрачный белый фон */
+    text-align: center;
+    line-height: 150px; /* Центрируем текст по вертикали */
+    cursor: pointer;
+    border-radius: 50%; /* Чтобы меню было круглым */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-avatar:hover .avatar-menu {
+    opacity: 1; /* Появляется при наведении */
+}
+
+
+button {
+    background-color: #000000;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #000000;
+}
